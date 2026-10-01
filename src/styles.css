@@ -1,0 +1,620 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@500;600&display=swap');
+
+:root {
+  font-family: 'DM Mono', monospace;
+  color: #4b2735;
+  background: #f6c4d3;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+button { font-family: inherit; }
+
+.app {
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 15%, #ffdce6, transparent 28%),
+    #f4b5ca;
+}
+
+.paper {
+  background: #fff5f7;
+  border: 1px solid #e4a5b8;
+  box-shadow: 7px 9px 0 #d98ca6;
+}
+
+.sub, .tiny { font-size: 12px; opacity: .7; }
+
+.pink-btn {
+  border: 0;
+  background: #b93462;
+  color: white;
+  padding: 13px 22px;
+  font: inherit;
+  cursor: pointer;
+}
+.pink-btn:disabled, .secondary-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+/* WELCOME */
+.home { min-height: 100vh; position: relative; padding: 48px; display: grid; place-items: center; }
+.hero-card { width: min(520px, 90vw); padding: 54px; transform: rotate(-1deg); }
+.hero-card h1 { font-family: 'Playfair Display', serif; font-size: 92px; line-height: .8; margin: 25px 0; }
+.hero-card p { font-size: 14px; margin-bottom: 35px; }
+
+/* DESK */
+.desk { min-height: 100vh; position: relative; padding: 48px; background-image: radial-gradient(#d994ac 1px, transparent 1px); background-size: 22px 22px; }
+.desk-note { position: absolute; top: 70px; left: 12%; padding: 22px 28px; transform: rotate(-3deg); display: grid; gap: 10px; }
+.desk-note b { font-family: 'Playfair Display', serif; font-size: 22px; }
+
+.object {
+  position: absolute;
+  border: 0;
+  background: #fff0f4;
+  width: 120px;
+  height: 110px;
+  box-shadow: 5px 6px 0 #d990aa;
+  cursor: grab;
+  color: #4b2735;
+  touch-action: none;
+  user-select: none;
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  font: inherit;
+}
+.object svg { width: 34px; height: 34px; }
+.object span { font-size: 12px; }
+.photo-object { left: 18%; top: 42%; transform: rotate(-7deg); }
+.game-object { right: 24%; top: 32%; transform: rotate(5deg); }
+.dino-object { left: 49%; top: 43%; transform: rotate(-3deg); }
+.music-object { left: 47%; bottom: 17%; transform: rotate(3deg); }
+.letter-object { right: 12%; bottom: 14%; transform: rotate(-5deg); }
+.aquarium-object { right: 30%; top: 58%; transform: rotate(-4deg); width: 135px; height: 125px; }
+
+.polaroid { position: absolute; right: 37%; top: 20%; background: #fff; padding: 12px 12px 25px; box-shadow: 5px 6px 0 #d990aa; transform: rotate(8deg); width: 202px; }
+.polaroid-placeholder { width: 100%; height: 130px; display: grid; place-items: center; background: #f2b5c8; font-size: 10px; opacity: .7; }
+.polaroid small { display: block; margin-top: 10px; font-size: 9px; }
+
+.landing-back, .back {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #d88fa7;
+  background: #fff5f7;
+  color: #4b2735;
+  box-shadow: 3px 4px 0 #d990aa;
+  cursor: pointer;
+}
+.landing-back { position: absolute; left: 28px; top: 26px; z-index: 4; }
+.landing-back:hover, .back:hover { background: #fff; }
+
+/* SUBPAGES */
+.subpage { min-height: 100vh; position: relative; padding: 34px; }
+.subpage h2 { font-family: 'Playfair Display', serif; font-size: 64px; margin: 35px 0 5px; }
+
+/* PHOTOS */
+.gallery { display: grid; grid-template-columns: repeat(4, minmax(160px, 1fr)); gap: 28px; margin-top: 45px; max-width: 1320px; width: calc(100% - 80px); }
+.gallery button { border: 0; background: #fff; padding: 12px 12px 25px; box-shadow: 4px 5px 0 #d990aa; cursor: pointer; }
+.gallery button:nth-child(2n) { transform: rotate(3deg); }
+.gallery button:nth-child(3n) { transform: rotate(-4deg); }
+.gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; background: #f2b5c8; }
+.gallery span { display: block; margin-top: 9px; text-align: left; font-size: 10px; }
+.lightbox { position: fixed; inset: 0; background: #4b2735dd; display: grid; place-items: center; padding: 50px; z-index: 50; cursor: pointer; }
+.lightbox img { max-width: 85vw; max-height: 80vh; object-fit: contain; }
+
+/* MUSIC */
+.music-layout { display: grid; grid-template-columns: minmax(320px, 460px) minmax(280px, 430px); align-items: start; gap: 34px; margin-top: 42px; max-width: 1000px; }
+.player { width: 100%; padding: 42px; display: grid; gap: 8px; text-align: center; }
+.album { width: min(250px, 100%); aspect-ratio: 1; height: auto; margin: 0 auto 20px; object-fit: cover; box-shadow: 7px 8px 0 #d990aa; }
+.player span { font-size: 11px; opacity: .65; }
+.player-actions { display: flex; justify-content: center; gap: 14px; margin-top: 20px; }
+.player-actions button { display: grid; place-items: center; width: 46px; height: 46px; border: 1px solid #d88fa7; background: #fff; color: #4b2735; cursor: pointer; }
+.playlist { padding: 20px; display: grid; gap: 8px; }
+.playlist-title { margin: 3px 4px 8px; font-size: 11px; opacity: .65; text-transform: uppercase; }
+.playlist button { display: flex; align-items: center; gap: 12px; width: 100%; border: 1px solid transparent; background: transparent; color: #4b2735; padding: 8px; text-align: left; cursor: pointer; font: inherit; }
+.playlist button:hover, .playlist button.active { border-color: #e1a1b5; background: #f9d8e2; }
+.playlist button img { width: 48px; height: 48px; object-fit: cover; flex: 0 0 auto; }
+.playlist button span { display: grid; gap: 4px; }
+.playlist button b { font-size: 12px; }
+.playlist button small { font-size: 10px; opacity: .68; }
+
+/* GAME */
+.quiz, .result { width: min(640px, calc(100vw - 180px)); padding: 38px; margin: 34px auto 0; }
+.quiz h3 { font-family: 'Playfair Display', serif; font-size: 28px; }
+.quiz > button:not(.next) { display: block; width: 100%; text-align: left; margin: 10px 0; padding: 14px; border: 1px solid #df9fb2; background: #fff; cursor: pointer; font: inherit; }
+.quiz > button.selected { background: #f4c3d1; }
+.quiz .next { margin-top: 20px; }
+
+/* DINO */
+.dino-page { width: min(850px, calc(100vw - 100px)); margin: 30px auto 0; }
+.dino-page h2 { margin-top: 8px; }
+.dino-score { display: flex; justify-content: space-between; margin: 20px 0 10px; font-size: 12px; text-transform: uppercase; }.dino-score span { opacity: .62; }
+.dino-stage { position: relative; height: 280px; overflow: hidden; cursor: pointer; touch-action: manipulation; background: radial-gradient(#efadc0 1px, transparent 1px) 0 0/12px 12px, linear-gradient(#fff5f7 0 78%, #ffd8e3 78%); }
+.dino-ground { position: absolute; right: 0; bottom: 18px; left: 0; height: 5px; background: #8d3656; box-shadow: 0 6px 0 #ef9ab4; }
+.pink-dino { position: absolute; left: 15%; width: 80px; height: 50px; z-index: 2; overflow: visible; image-rendering: pixelated; }
+.dino-pixel-outline { fill: #702b4b; }.dino-fill { fill: #f47fa4; }.dino-shadow { fill: #c94d78; }.dino-highlight { fill: #ffb0c4; }.dino-eye, .dino-mouth { fill: #4b2735; }.dino-tooth { fill: #fff1f5; }.dino-arm, .dino-leg, .dino-foot { fill: #c94d78; }
+.pink-dino.running .left-leg, .pink-dino.running .left-leg + .left-leg { animation: dino-leg-left .18s steps(1, end) infinite; transform-origin: 13px 33px; }.pink-dino.running .right-leg, .pink-dino.running .right-leg + .right-leg { animation: dino-leg-right .18s steps(1, end) infinite; transform-origin: 31px 33px; }
+.pink-dino.jumping .dino-leg, .pink-dino.jumping .dino-foot { transform: translateY(-2px); }.pink-dino.ducking { height: 37px; width: 80px; }
+@keyframes dino-leg-left { 50% { transform: translate(-3px, 2px); } } @keyframes dino-leg-right { 50% { transform: translate(3px, 2px); } }
+.dino-obstacle { position: absolute; display: grid; place-items: center; color: #fff4f7; font-size: 23px; line-height: 1; background: #d95d88; border: 3px solid #913853; border-radius: 0; box-shadow: inset -4px -4px 0 #b64268; z-index: 2; }.dino-obstacle.ground::before { content: ""; position: absolute; inset: 4px 40% 4px 4px; background: #f6a1b9; }.dino-obstacle.flying { color: #f8c6d5; background: #8d3656; box-shadow: 4px 3px 0 #e97c9f; }
+.dino-cloud { position: absolute; color: #df8ea8; opacity: .68; font-size: 24px; }.cloud-one { top: 20%; left: 38%; }.cloud-two { top: 38%; right: 18%; }
+.dino-message { position: absolute; inset: 0; z-index: 4; display: grid; place-content: center; gap: 10px; text-align: center; background: rgba(255,245,247,.55); }.dino-message b { font-family: 'Playfair Display', serif; font-size: 34px; }.dino-message span { font-size: 12px; }.dino-message .pink-btn { justify-self: center; }
+.dino-controls { display: flex; gap: 12px; margin-top: 14px; }.dino-controls button { min-width: 92px; min-height: 48px; flex: 1; max-width: 180px; justify-content: center; text-transform: uppercase; }.dino-duck { touch-action: none; }
+
+/* LETTER */
+.letter { max-width: 700px; padding: 55px; margin: 50px auto; white-space: pre-wrap; line-height: 1.9; }
+.letter h2 { font-size: 40px; margin-top: 25px; }
+.letter-next { margin-top: 14px; }
+
+.final-question { width: min(680px, calc(100vw - 160px)); margin: 12vh auto 0; text-align: center; }
+.final-question h2 { font-size: 64px; line-height: 1.02; margin: 18px 0 30px; }
+.final-question-copy { white-space: pre-line; line-height: 1.8; font-size: 14px; }
+.final-question-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+.final-question-actions .secondary-btn.selected { background: #f8c7d5; border-color: #b93462; }
+.final-answer { margin: 28px auto 0; max-width: 440px; font-size: 12px; line-height: 1.7; }
+.final-answer b { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 500; }
+.dodge-area { position: relative; width: min(100%, 430px); height: 64px; margin: 14px auto 0; overflow: hidden; }
+.dodge-button { position: absolute; left: 50%; top: 0; transform: translateX(-50%); white-space: nowrap; transition: left .28s ease, top .28s ease, transform .28s ease; }
+.dodge-button[style] { transform: none; }
+.celebration { position: absolute; inset: -38px -22vw auto; height: 240px; overflow: hidden; pointer-events: none; z-index: 2; }
+.celebration-piece { position: absolute; top: 8px; color: #b93462; font-size: 23px; opacity: 0; animation: celebrate 1.45s cubic-bezier(.15,.75,.3,1) both; }
+.piece-1 { color: #fff5f7; text-shadow: 0 0 0 #d98ca6, 1px 1px 0 #d98ca6; }
+.piece-2 { color: #e78da9; font-size: 30px; }
+@keyframes celebrate { 0% { transform: translateY(50px) scale(.4) rotate(0deg); opacity: 0; } 18% { opacity: 1; } 100% { transform: translateY(205px) scale(1.1) rotate(220deg); opacity: 0; } }
+
+/* MUSIC INDICATOR */
+.now-playing { position: fixed; right: 24px; top: 20px; border: 1px solid #d88fa7; background: #fff5f7; color: #4b2735; padding: 9px 13px; font: inherit; z-index: 40; cursor: pointer; }
+.disc { display: inline-block; margin-right: 7px; }
+.spinning { animation: spin 2s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* AQUARIUM */
+.aquarium-page { max-width: 1120px; margin: 0 auto; }
+.aquarium-heading { margin-top: 30px; }
+.aquarium-heading h2 { margin-top: 8px; }
+.aquarium-help { font-size: 12px; opacity: .68; }
+.aquarium-layout { display: grid; grid-template-columns: minmax(330px, 430px) minmax(400px, 1fr); gap: 55px; align-items: center; margin-top: 24px; }
+
+.fish-picker { padding: 28px; }
+.picker-title { display: flex; align-items: center; justify-content: space-between; text-transform: uppercase; font-size: 11px; letter-spacing: .12em; opacity: .72; }
+.fish-options { display: grid; grid-template-columns: repeat(2, minmax(110px, 1fr)); gap: 14px; margin: 25px 0; }
+.fish-choice { border: 1px solid #e1a1b5; background: #fff9fa; padding: 12px; cursor: pointer; font: inherit; color: #4b2735; transition: transform .18s, background .18s, border-color .18s; }
+.fish-choice:hover { transform: translateY(-3px); }
+.fish-choice.chosen { background: #f8c7d5; border-color: #b93462; box-shadow: 3px 4px 0 #d990aa; }
+.fish-choice img { display: block; width: 100%; height: 85px; object-fit: contain; image-rendering: auto; }
+.fish-choice span { display: block; font-size: 10px; margin-top: 8px; }
+.fish-enter { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; }
+
+.jar-stage { min-height: 460px; display: grid; place-items: center; align-content: center; }
+.jar-wrap { position: relative; width: min(370px, 58vw); aspect-ratio: 1891 / 2048; overflow: hidden; }
+.jar-reference { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1; }
+
+/* The selected fish is fully opaque. It sits over the blue water and in front of the background scene. */
+.jar-fish-slot, .pet-fish-slot {
+  position: absolute;
+  z-index: 4;
+  display: block;
+  transform: translate(-50%, -50%);
+  transition: left .55s ease-out, top .55s ease-out, width .55s ease-out;
+  pointer-events: none;
+}
+
+.jar-fish {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 1;
+  image-rendering: auto;
+  pointer-events: none;
+  animation: jarSwim 3.4s ease-in-out infinite alternate;
+}
+
+/* The slot is already inside the water-safe area. Movement stays local to each sprite. */
+@keyframes jarSwim { from { transform: translate(-4%, 2%) rotate(-2deg); } to { transform: translate(4%, -2%) rotate(2deg); } }
+
+.aquarium-bubbles { position: absolute; inset: 10% 12% 24%; z-index: 5; pointer-events: none; overflow: hidden; }
+.aquarium-bubbles i { position: absolute; width: 8px; height: 8px; border: 2px solid rgba(255,255,255,.8); border-radius: 50%; bottom: 12%; left: 20%; animation: bubbleRise 4.8s linear infinite; }
+.aquarium-bubbles i:nth-child(2) { left: 36%; width: 5px; height: 5px; animation-delay: -1.4s; animation-duration: 5.7s; }
+.aquarium-bubbles i:nth-child(3) { left: 54%; width: 7px; height: 7px; animation-delay: -2.5s; animation-duration: 4.4s; }
+.aquarium-bubbles i:nth-child(4) { left: 68%; width: 4px; height: 4px; animation-delay: -.8s; animation-duration: 6.1s; }
+.aquarium-bubbles i:nth-child(5) { left: 47%; width: 10px; height: 10px; animation-delay: -3.2s; animation-duration: 5.2s; }
+.aquarium-bubbles i:nth-child(6) { left: 80%; width: 6px; height: 6px; animation-delay: -4s; animation-duration: 6.5s; }
+@keyframes bubbleRise { from { transform: translateY(40px); opacity: 0; } 15% { opacity: .9; } to { transform: translateY(-310px); opacity: 0; } }
+@keyframes swim { from { transform: translate(-7px, 4px) rotate(-1deg); } to { transform: translate(9px, -7px) rotate(1deg); } }
+
+.jar-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: -26px; z-index: 10; }
+.secondary-btn { display: flex; align-items: center; gap: 7px; border: 1px solid #d88fa7; background: #fff5f7; color: #4b2735; padding: 13px 17px; font: inherit; cursor: pointer; }
+.jar-actions .pink-btn { display: flex; align-items: center; gap: 7px; }
+
+/* PERSISTENT BOTTOM-LEFT PET */
+.pet-aquarium { position: fixed; left: 22px; bottom: 18px; width: 190px; height: 165px; border: 0; background: transparent; padding: 0; cursor: pointer; z-index: 30; filter: drop-shadow(4px 5px 0 rgba(160,61,91,.18)); }
+.pet-aquarium-scene { position: relative; width: 100%; height: 100%; overflow: hidden; }
+.pet-aquarium-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1; }
+.pet-fish {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 1;
+  animation: jarSwim 3.2s ease-in-out infinite alternate;
+  image-rendering: auto;
+  pointer-events: none;
+}
+
+.pet-bubbles { position: absolute; inset: 12% 14% 24%; z-index: 5; pointer-events: none; overflow: hidden; }
+.pet-bubbles i { position: absolute; width: 5px; height: 5px; border: 1px solid rgba(255,255,255,.85); border-radius: 50%; bottom: 15%; left: 30%; animation: bubbleRise 4.7s linear infinite; }
+.pet-bubbles i:nth-child(2) { left: 58%; animation-delay: -2s; }
+.pet-bubbles i:nth-child(3) { left: 73%; animation-delay: -3.2s; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .aquarium-layout { grid-template-columns: 1fr; gap: 8px; }
+  .aquarium-page { max-width: 680px; }
+  .jar-stage { min-height: 430px; }
+  .jar-wrap { width: min(390px, 82vw); }
+}
+
+@media (max-width: 800px) {
+  .home, .desk, .subpage { padding: 20px; }
+
+  .desk {
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  .desk-note {
+    top: 88px;
+    left: 10%;
+    max-width: 210px;
+  }
+
+  .polaroid {
+    right: 50%;
+    top: 28%;
+    width: 150px;
+    transform: translateX(50%) rotate(5deg);
+  }
+
+  .polaroid-placeholder { height: 105px; }
+
+  .object {
+    width: 92px;
+    height: 88px;
+    font-size: 11px;
+  }
+
+  .object svg { width: 27px; height: 27px; }
+  .object span { font-size: 10px; }
+
+  /* Mobile gets its own uncluttered starting layout.
+     The pointer-drag interaction still works because these are
+     the same draggable objects, just placed differently. */
+  .photo-object { left: 8%; top: 48%; transform: rotate(-6deg); }
+  .game-object { right: 8%; top: 44%; transform: rotate(5deg); }
+  .dino-object { left: 39%; top: 58%; transform: rotate(-3deg); }
+  .aquarium-object { right: 8%; top: 60%; transform: rotate(-4deg); }
+  .music-object { left: 9%; top: 70%; transform: rotate(3deg); }
+  .letter-object { right: 8%; top: 76%; transform: rotate(-5deg); }
+
+  .pet-aquarium {
+    width: 132px;
+    height: 112px;
+    left: 8px;
+    bottom: 8px;
+  }
+
+  .subpage {
+    min-height: 100svh;
+    overflow-x: hidden;
+    padding-bottom: 150px;
+  }
+
+  .subpage h2 { font-size: 48px; }
+
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    width: 100%;
+  }
+
+  .aquarium-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .fish-picker {
+    order: 1;
+  }
+
+  .jar-stage {
+    order: 2;
+    min-height: 390px;
+  }
+
+  .jar-wrap {
+    width: min(340px, 86vw);
+  }
+
+  .jar-actions {
+    margin-top: -18px;
+    padding-bottom: 20px;
+  }
+
+  .fish-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .fish-choice { padding: 8px; }
+  .fish-choice img { height: 64px; }
+  .fish-choice span { font-size: 8px; }
+
+  .letter {
+    margin: 30px auto;
+    padding: 32px 24px;
+  }
+
+  .final-question {
+    width: min(600px, 100%);
+    margin-top: 70px;
+  }
+
+  .final-question h2 { font-size: 46px; }
+  .dodge-area { height: 72px; }
+  .celebration { inset-inline: -12px; }
+
+  .player {
+    margin-top: 35px;
+  }
+
+  .music-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 35px;
+  }
+
+  .playlist { max-width: 520px; }
+
+  .quiz, .result {
+    width: min(600px, 100%);
+    margin: 34px 0 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-card { padding: 34px 26px; }
+  .hero-card h1 { font-size: 64px; }
+
+  .desk-note {
+    left: 18%;
+    top: 84px;
+  }
+
+  .polaroid { top: 26%; }
+
+  .photo-object { left: 7%; top: 48%; }
+  .game-object { right: 7%; top: 48%; }
+  .dino-object { left: 39%; top: 60%; }
+  .aquarium-object { right: 7%; top: 61%; }
+  .music-object { left: 7%; top: 70%; }
+  .letter-object { right: 7%; top: 76%; }
+
+  .dino-page { width: 100%; margin-top: 25px; }
+  .dino-stage { height: 230px; }
+
+  .landing-back { left: 14px; top: 14px; }
+  .now-playing { right: 12px; top: 14px; }
+
+  .pet-aquarium {
+    width: 116px;
+    height: 98px;
+  }
+}
+
+/* =====================================================
+   MAIN DESKTOP — SMALL DECORATIVE DETAILS
+   These are intentionally non-interactive so the real
+   navigation objects remain the focus.
+   ===================================================== */
+.desk-sticker {
+  position: absolute;
+  z-index: 1;
+  color: #b93462;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sticker-flower {
+  left: 7%;
+  bottom: 19%;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  transform: rotate(-12deg);
+  opacity: .72;
+}
+
+.sticker-flower::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px dashed #d78aa2;
+  border-radius: 50%;
+}
+
+.sticker-sparkle {
+  right: 7%;
+  top: 19%;
+  opacity: .48;
+  transform: rotate(8deg);
+}
+
+.sticker-heart {
+  left: 40%;
+  top: 11%;
+  font-family: Georgia, serif;
+  font-size: 38px;
+  line-height: 1;
+  opacity: .36;
+  transform: rotate(-12deg);
+}
+
+.desk-tape {
+  position: absolute;
+  width: 92px;
+  height: 24px;
+  background: rgba(255, 233, 194, .76);
+  border: 1px solid rgba(209, 151, 169, .35);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.tape-one {
+  left: 10.5%;
+  top: 61%;
+  transform: rotate(-9deg);
+}
+
+.tape-two {
+  right: 18%;
+  top: 24%;
+  transform: rotate(7deg);
+}
+
+.desk-caption {
+  position: absolute;
+  left: 29%;
+  bottom: 8%;
+  z-index: 1;
+  padding: 8px 13px;
+  border-bottom: 1px solid #d78aa2;
+  color: #9b4965;
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  transform: rotate(-4deg);
+  opacity: .7;
+  pointer-events: none;
+}
+
+.draggable-object {
+  transition: box-shadow .18s ease, filter .18s ease;
+}
+
+.draggable-object:hover {
+  filter: saturate(1.03);
+  box-shadow: 7px 8px 0 #d990aa;
+}
+
+.draggable-object:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 800px) {
+  .sticker-flower {
+    left: 4%;
+    bottom: 16%;
+    transform: scale(.78) rotate(-12deg);
+  }
+
+  .sticker-sparkle {
+    right: 4%;
+    top: 18%;
+    transform: scale(.72) rotate(8deg);
+  }
+
+  .sticker-heart {
+    left: 43%;
+    top: 16%;
+    transform: scale(.75) rotate(-12deg);
+  }
+
+  .tape-one {
+    left: 5%;
+    top: 62%;
+    transform: scale(.75) rotate(-9deg);
+  }
+
+  .tape-two {
+    right: 8%;
+    top: 32%;
+    transform: scale(.75) rotate(7deg);
+  }
+
+  .desk-caption {
+    left: 28%;
+    bottom: 5%;
+    font-size: 12px;
+  }
+}
+
+/* =====================================================
+   EASY ASSET ADJUSTMENTS
+   ===================================================== */
+:root {
+  --photo-zoom: 1;
+  --hero-photo-size: 100%;
+  --butterfly-size: 150px;
+  --lily-soft-size: 135px;
+  --bow-size: 105px;
+  --mirror-size: 130px;
+  --lily-speckled-size: 145px;
+}
+
+.polaroid { border: 0; cursor: pointer; text-align: left; }
+.polaroid img {
+  display: block;
+  width: var(--hero-photo-size);
+  height: 130px;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(var(--photo-zoom));
+  transform-origin: center;
+  background: #f2b5c8;
+}
+
+.desk-art {
+  position: absolute;
+  z-index: 2;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(3px 5px 0 rgba(145, 55, 86, .10));
+}
+.art-butterfly { width: var(--butterfly-size); left: 4%; top: 18%; transform: rotate(-10deg); }
+.art-lily-soft { width: var(--lily-soft-size); right: 5%; top: 8%; transform: rotate(10deg); }
+.art-bow { width: var(--bow-size); left: 46%; top: 7%; transform: rotate(-7deg); }
+.art-mirror { width: var(--mirror-size); left: 16%; bottom: 8%; transform: rotate(-5deg); }
+.art-lily-speckled { width: var(--lily-speckled-size); right: 2%; bottom: 5%; transform: rotate(8deg); }
+
+.gallery img {
+  object-position: center;
+  transform: scale(var(--photo-zoom));
+  transform-origin: center;
+}
+
+@media (max-width: 800px) {
+  .art-butterfly { width: 92px; left: 1%; top: 12%; }
+  .art-lily-soft { width: 84px; right: 1%; top: 8%; }
+  .art-bow { width: 70px; left: 77%; top: 24%; }
+  /* Mirror, caption, and aquarium stay as separate bottom decorations. */
+  .art-mirror { width: 76px; left: 4%; bottom: 3%; }
+  .art-lily-speckled { width: 88px; right: 0%; bottom: 4%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celebration-piece { animation: none; opacity: .9; transform: none; }
+  .celebration-piece:nth-child(n + 7) { display: none; }
+  .dodge-button { transition: none; }
+  .pink-dino.running .left-leg, .pink-dino.running .right-leg { animation: none; }
+}
+
+.app {
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(255, 220, 230, .85), transparent 28%),
+    radial-gradient(rgba(110, 44, 69, .10) .7px, transparent .7px),
+    linear-gradient(#f4b5ca, #f4b5ca);
+  background-size: auto, 18px 18px, auto;
+}
