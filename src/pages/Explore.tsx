@@ -1237,7 +1237,7 @@ function FinalQuestion({
         <p className="sub">after everything we've been through...</p>
         <h2 id="final-question-title">we should give us another chance ga sih?</h2>
         <p className="final-question-copy">
-          {"no promises that it’ll be easy\nbut maybe this time, we do it right\n\numm so...be my girlfriend?"}
+          {"no promises that it’ll be easy\nbut maybe this time, we do it right\n\numm so...be my girlfriend yayaya?"}
         </p>
         <div className="final-question-actions">
           <button
